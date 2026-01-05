@@ -26,4 +26,5 @@ MediBook is a Spring Boot based web application for managing clinic operations s
 2. Configure MySQL in `application.properties`
 3. Run the application using:
    ```bash
-   mvn spring-boot:run
+   cd demo
+.\mvnw spring-boot:run
