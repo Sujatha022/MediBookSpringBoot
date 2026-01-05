@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+        <a class="navbar-brand" th:href="@{/}">MediBook</a>
+
+        <ul class="navbar-nav ms-auto">
+
+            
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/}">Home</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/doctors}">Doctors</a>
+            </li>
+
+            <!-- Visible only AFTER login -->
+            <li class="nav-item" th:if="${session.loggedInUser != null}">
+                <a class="nav-link" th:href="@{/book-appointment}">Book Appointment</a>
+            </li>
+
+            <li class="nav-item" th:if="${session.loggedInUser != null}">
+                <a class="nav-link" th:href="@{/my-appointments}">My Appointments</a>
+            </li>
+
+            <!-- Login/Register ONLY before login -->
+            <li class="nav-item" th:if="${session.loggedInUser == null}">
+                <a class="nav-link" th:href="@{/login}">Login</a>
+            </li>
+
+            <li class="nav-item" th:if="${session.loggedInUser == null}">
+                <a class="nav-link" th:href="@{/register}">Register</a>
+            </li>
+
+           
+            <li class="nav-item dropdown" th:if="${session.loggedInUser != null}">
+                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                    Welcome, <span th:text="${session.loggedInUser}"></span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li>
+                        <a class="dropdown-item" th:href="@{/logout}">Logout</a>
+                    </li>
+                </ul>
+            </li>
+
+        </ul>
+    </div>
+</nav>
+
+</body>
+</html>

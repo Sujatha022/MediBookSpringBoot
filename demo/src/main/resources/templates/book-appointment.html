@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Appointment | MediBook</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Book an Appointment</h2>
+
+    <form th:action="@{/book-appointment}" method="post"
+          class="col-md-6 mx-auto card p-4 shadow">
+
+        <div class="mb-3">
+            <label class="form-label">Select Doctor</label>
+            <select class="form-select" name="doctorName" required>
+                <option disabled selected>Choose Doctor</option>
+                <option>Dr. Anil Kumar - Cardiologist</option>
+                <option>Dr. Sneha Rao - Dermatologist</option>
+                <option>Dr. Ravi Teja - Orthopedic</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Appointment Date</label>
+            <input type="date" name="appointmentDate" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Appointment Time</label>
+            <input type="time" name="appointmentTime" class="form-control" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">
+            Confirm Appointment
+        </button>
+    </form>
+</div>
+
+</body>
+</html>
